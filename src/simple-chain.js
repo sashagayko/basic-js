@@ -12,7 +12,6 @@ const chainMaker = {
   addLink(value) {
     this.chain.push(value)
     return this
-
   },
   removeLink(position) {
     if (position - 1 < 0 || position > this.chain.length || typeof position !== 'number') {
@@ -29,7 +28,9 @@ const chainMaker = {
     return this
   },
   finishChain() {
-    return this.chain.map(el => `( ${el} )`).join('~~')
+    let result = this.chain.map(el => `( ${el} )`).join('~~')
+    this.chain = []
+    return result
   }
 
 };
