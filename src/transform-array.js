@@ -15,7 +15,7 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function transform(arr) {
   if (!Array.isArray(arr) || typeof (arr) != 'object') {
-    return '\'arr\' parameter must be an instance of the Array!'
+    throw new Error("'arr' parameter must be an instance of the Array!")
   }
   let newArr = [];
   arr.forEach((el, i, arr) => {
@@ -27,7 +27,6 @@ function transform(arr) {
       arr[i + 1] ? newArr.push(arr[i + 1]) : false;
     } else if (el === '--double-prev') {
       newArr[i - 1] ? newArr.push(newArr[i - 1]) : false;
-      console.log(arr[i - 1]);
     } else {
       newArr.push(el)
     }

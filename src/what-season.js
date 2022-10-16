@@ -14,8 +14,11 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date) {
   console.log(date);
   if (!date) { return 'Unable to determine the time of year!' }
-  if (typeof (date) !== 'object' || isNaN(new Date(date).getFullYear()) || new Date() == date) { return "Invalid date!" }
-  console.log(typeof (new Date()));
+  try {
+    date.getTime();
+  } catch {
+    throw new Error('Invalid date!');
+  }
   if (date.getMonth() >= 2 && date.getMonth() <= 4) {
     return 'spring';
   } else if (date.getMonth() >= 5 && date.getMonth() <= 7) {
